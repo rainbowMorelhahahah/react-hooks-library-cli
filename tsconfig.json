@@ -1,7 +1,7 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "target": "ES6",
+    "target": "ESNext",
     "moduleResolution": "node",
     "jsx": "react",
     "esModuleInterop": true,
