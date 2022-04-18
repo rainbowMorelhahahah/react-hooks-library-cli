@@ -1,12 +1,12 @@
 {
   "name": "linkseeks-hooks",
-  "version": "1.0.0",
-  "description": "",
-  "main": "./dist/linkseeks-hooks.js",
+  "version": "1.0.2",
+  "description": "一个 hooks 库",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "webpack",
-    "pub":"pnpm build && pnpm publish"
+    "build": "gulp",
+    "pub": "pnpm build && pnpm publish"
   },
   "repository": {
     "type": "git",
@@ -14,9 +14,17 @@
   },
   "author": "",
   "license": "ISC",
+  "peerDependencies": {
+    "react": "^16.8.0  || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0  || ^17.0.0 || ^18.0.0"
+  },
   "dependencies": {
     "@linkseeks/core": "1.3.30",
     "@types/react": "^18.0.5",
+    "gulp": "^4.0.2",
+    "gulp-clean": "^0.4.0",
+    "gulp-sourcemaps": "^3.0.0",
+    "gulp-typescript": "^6.0.0-alpha.1",
     "inversify": "^6.0.1",
     "react": "^18.0.0",
     "ts-loader": "^9.2.8",

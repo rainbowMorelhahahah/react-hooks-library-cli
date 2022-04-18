@@ -1,3 +1,2 @@
+import { useInject } from './useInject';
 export { useInject };
-
-export declare function useInject<T>(identifier: interfaces.ServiceIdentifier<T>): [T | undefined];
