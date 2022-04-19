@@ -1,51 +1,57 @@
 {
-  "name": "crh",
-  "version": "1.0.3",
-  "description": "",
-  "author": "rex",
+  "name": "linkseeks-hooks",
+  "description": "React hook that provides copy to clipboard functionality.",
+  "version": "1.0.5",
+  "author": "rex <rainbowmorel@163.com>",
   "license": "MIT",
-  "repository": "/crh",
-  "main": "dist/index.js",
-  "module": "dist/index.es.js",
-  "types": "dist/index.d.ts",
-  "jsnext:main": "dist/index.es.js",
-  "engines": {
-    "node": ">=8",
-    "npm": ">=5"
-  },
+  "source": "./src/index.tsx",
+  "main": "./dist/linkseeks-hooks.js",
+  "module": "./dist/linkseeks-hooks.module.js",
+  "unpkg": "./dist/linkseeks-hooks.umd.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "cross-env CI=1 react-scripts test --env=jsdom",
-    "test:watch": "react-scripts test --env=jsdom",
-    "build": "rollup -c && tsc -d --emitDeclarationOnly --noEmit false --declarationDir dist",
-    "start": "rollup -c -w",
-    "prepare": "yarn run build",
-    "predeploy": "cd example && yarn install && yarn run build",
-    "deploy": "gh-pages -d example/build",
-    "pub":"pnpm build && pnpm publish"
+    "test": "yarn test:tslint && yarn test:jest && yarn test:prettier",
+    "test:tslint": "tslint -c tslint.json --project tsconfig.json '**/*.{ts,tsx,js,jsx}'",
+    "test:jest": "jest --coverage",
+    "test:prettier": "prettier \"**/*.{ts,tsx,js,jsx,css,scss,json,md,mdx,html}\" --list-different",
+    "format": "prettier \"**/*.{ts,tsx,js,jsx,css,scss,json,md,mdx,html}\" --write",
+    "build": "yarn microbundle",
+    "release": "rm -rf dist && yarn install --frozen-lockfile && yarn test && yarn build && yarn changeset publish"
   },
-  "dependencies": {},
-  "peerDependencies": {
-    "react": "^16.9.0"
+  "dependencies": {
+    "copy-to-clipboard": "^3.3.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/runtime": "^7.3.1",
-    "@rollup/plugin-babel": "^5.2.0",
-    "@rollup/plugin-commonjs": "^15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
-    "@rollup/plugin-typescript": "^5.0.2",
-    "@rollup/plugin-url": "^5.0.1",
-    "@testing-library/react-hooks": "^3.2.1",
-    "@types/jest": "^23.3.13",
-    "@types/react": "^16.7.22",
-    "cross-env": "^5.2.0",
-    "gh-pages": "^2.0.1",
-    "react": "^16.9.0",
-    "react-scripts": "^3.4.0",
-    "react-test-renderer": "^16.9.0",
-    "rollup": "^2.26.9",
-    "rollup-plugin-peer-deps-external": "^2.2.0",
-    "tslib": "^2.0.1",
-    "typescript": "^3.2.4"
-  }
+    "@babel/preset-typescript": "^7.12.7",
+    "@changesets/cli": "^2.12.0",
+    "@testing-library/react": "^11.1.0",
+    "@types/jest": "^26.0.15",
+    "@types/react": "^16.9.55",
+    "@types/react-dom": "^16.9.9",
+    "jest": "^26.6.1",
+    "microbundle": "0.12.4",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "tslint": "^6.1.3",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-react": "^5.0.0",
+    "tslint-react-hooks": "^2.2.2"
+  },
+  "peerDependencies": {
+    "react": "^16.8.0 || ^17 || ^18",
+    "react-dom": "^16.8.0 || ^17 || ^18"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "react",
+    "component",
+    "linkseeks",
+    "hooks"
+  ]
 }
